@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        AWS_ACCESS_KEY     = credentials('AWS_ACCESS_KEY')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        AWS_REGION            = credentials('AWS_REGION')
+        BUCKET_NAME           = credentials('BUCKET_NAME')
+    }   
+
     stages {
         stage('git checkout') {
             steps {
