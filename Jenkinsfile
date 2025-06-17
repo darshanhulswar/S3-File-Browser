@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Pushing image to Docker Hub repository') {
             steps{
-                sh 'docker push darshanhulswar/project:1'
+                sh 'docker push darshanhulswar/s3-file-browser:latest'
             }
         }
     }
