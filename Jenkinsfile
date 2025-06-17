@@ -22,13 +22,13 @@ pipeline {
         stage("containerisation") {
         steps {
             sh '''
-                docker run -it -d --name envtest \
+                docker run -it -d --name s3-file-browser \
                     -e AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
                     -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
                     -e AWS_REGION=$AWS_REGION \
                     -e BUCKET_NAME=$BUCKET_NAME \
                     -p 9002:8501 \
-                    envtest:1
+                    s3-file-browser:latest
             '''
         }
     }
