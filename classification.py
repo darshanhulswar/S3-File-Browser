@@ -10,7 +10,7 @@ load_dotenv()
 AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY")
 AWS_SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 BUCKET_NAME = os.getenv("BUCKET_NAME")
-REGION = os.environ.get("AWS_REGION")
+REGION = os.getenv("AWS_REGION")
 
 # Create S3 client
 s3 = boto3.client(
