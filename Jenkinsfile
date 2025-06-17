@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'master'
+                git url: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'master'
             }
         }
         stage('build and tag Dockerfile') {
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Pushing image to Docker Hub repository') {
             steps{
-                sh 'docker push darshanhulswar/project:1'
+                sh 'docker push darshanhulswar/s3-file-browser:latest'
             }
         }
     }
