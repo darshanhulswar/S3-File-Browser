@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'main'
+                git branch: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'master'
             }
         }
         stage('build and tag Dockerfile') {
@@ -20,10 +20,18 @@ pipeline {
             }
         }
         stage("containerisation") {
-            steps{
-                sh 'docker run -it -d --name c1 -p 9002:8501 darshanhulswar/s3-file-browser:latest'
-            }
+        steps {
+            sh '''
+                docker run -it -d --name envtest \
+                    -e AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+                    -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+                    -e AWS_REGION=$AWS_REGION \
+                    -e BUCKET_NAME=$BUCKET_NAME \
+                    -p 9002:8501 \
+                    envtest:1
+            '''
         }
+    }
         stage('Login to Docker Hub') {
             steps {
                 script {
