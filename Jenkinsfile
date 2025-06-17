@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git url: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'main'
+                git url: 'https://github.com/darshanhulswar/S3-File-Browser.git', branch: 'master'
             }
         }
         stage('build and tag Dockerfile') {
