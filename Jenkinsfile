@@ -28,7 +28,7 @@ pipeline {
                     -e AWS_REGION=$AWS_REGION \
                     -e BUCKET_NAME=$BUCKET_NAME \
                     -p 9002:8501 \
-                    s3-file-browser:latest
+                    darshanhulswar/s3-file-browser:latest
             '''
         }
     }
